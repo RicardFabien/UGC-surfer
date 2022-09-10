@@ -10,15 +10,17 @@ const scraperObject = {
 
        await page.waitForSelector('.dates-content .slick-initialized');
        await page.waitForTimeout(4000);
-        let titles = []; 
+        var titles = []; 
 
         // Select the category of book to be displayed
-		let selectedCategory = await page.$$eval('.dates-content > div > .slider-item', (cards, _category) => {
+		await page.$$eval('.dates-content > div > .slider-item', (cards) => {
 
+            console.log('cards: ',cards)
+            titles[0] = "something"
+            // titles = cards.filter(card => !!card.querySelector("a.gaClick").getAttribute('title'))
+            // titles = titles.map(card => card.querySelector("a.gaClick").getAttribute('title'))
 
-            titles = cards.filter(card => card.querySelector("a.gaClick").title).map(card => card.querySelector(".dates-content > div > .slider-item a.gaClick").title)
-
-		}, category);
+		});
 		
         console.log("Title: ", titles[0]);
     }

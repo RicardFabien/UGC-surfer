@@ -5,7 +5,7 @@ async function scrapeAll(browserInstance){
 		browser = await browserInstance;
 		let scrapedData = {};
 		// Call the scraper for different set of books to be scraped
-		scrapedData['Travel'] = await pageScraper.scraper(browser, 'Travel');
+		scrapedData= await pageScraper.scraper(browser);
 		await browser.close();
 		console.log(scrapedData)
 	}
